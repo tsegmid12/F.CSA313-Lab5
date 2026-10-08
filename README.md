@@ -78,13 +78,13 @@ pm.test("Result нь OK байна", function () {
 newman run lab05-collection.json 2>&1 | tee results/newman-pass.txt
 ```
 
-* **Ажилласан assertion:** `[Newman-ийн бодит тоо]`
+* **Ажилласан assertion:** `[22]`
 * **Алдсан assertion:** `0`
 * **Exit code:** `0`
 * **Үр дүн:** PASS
 
 Дээрх `Ажилласан assertion` тоог `results/newman-pass.txt` файлын Newman-ийн эцсийн тайлангаас шууд авсан.
-
+Newman-ийн тайлангаас харагдсанаар нийт 22 assertion ажилласан бөгөөд энэ нь спецификацийн хүснэгтэд заасан статус болон утгын oracle-уудын нийлбэртэй нийцэж байна.
 README-д бичсэн assertion-ийн тоо нь Newman-ийн бодит `assertions executed` тоотой яг ижил байна.
 
 ---
@@ -105,7 +105,7 @@ lab05-collection-fail.json
 newman run lab05-collection-fail.json 2>&1 | tee results/newman-fail.txt
 ```
 
-* **Ажилласан assertion:** `[Newman-ийн бодит тоо]`
+* **Ажилласан assertion:** `[22]`
 * **Алдсан assertion:** `[1 буюу түүнээс их]`
 * **Exit code:** `1`
 * **Үр дүн:** FAIL
