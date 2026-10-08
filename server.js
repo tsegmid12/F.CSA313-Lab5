@@ -67,19 +67,6 @@ const server = http.createServer((req, res) => {
       return send(res, 201, { result: 'OK', registrationID });
     }
 
-
-    if(req.method === 'DELETE' && url === '/registrations') {
-      const registrationID  = Number(data.registrationID);
-      
-      if (!registrationID) return send(res, 400, { result: 'ERROR_BAD_REQUEST' });
-
-      const index = registrations.findIndex(r => r.registrationID === registrationID);
-      if (index === -1) return send(res, 200, { result: 'ERROR_NO_REGISTRATION' });
-
-      registrations.splice(index, 1);
-      return send(res, 200, { result: 'OK' });
-    }
-
     if (req.method === 'GET' && url === '/registrations')
       return send(res, 200, registrations);
 

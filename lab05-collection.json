@@ -62,7 +62,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"studentID\": \"S1\", \"courseID\": \"CS313\"}",
+              "raw": "{\"studentID\": \"B231234567\", \"courseID\": \"CS313\"}",
               "options": { "raw": { "language": "json" } }
             },
             "url": {
