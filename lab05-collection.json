@@ -19,9 +19,9 @@
               "options": { "raw": { "language": "json" } }
             },
             "url": {
-              "raw": "{{baseUrl}}/students/b231234567",
+              "raw": "{{baseUrl}}/students/B231234567",
               "host": ["{{baseUrl}}"],
-              "path": ["students", "b231234567"]
+              "path": ["students", "B231234567"]
             }
           }
         },

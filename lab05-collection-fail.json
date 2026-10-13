@@ -62,7 +62,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"studentID\": \"S1\", \"courseID\": \"CS313\"}",
+              "raw": "{\"studentID\": \"B231234567\", \"courseID\": \"CS313\"}",
               "options": { "raw": { "language": "json" } }
             },
             "url": {
@@ -396,7 +396,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test(\"Status is 201\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Status is 201\", function () { pm.response.to.have.status(201); });",
                   "pm.test(\"Result is OK\", function () { var jsonData = pm.response.json(); pm.expect(jsonData.result).to.eql(\"OK\"); });"
                 ],
                 "type": "text/javascript"
