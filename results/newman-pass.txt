@@ -2,35 +2,123 @@ newman
 
 Lab05 API Tests
 
-□ 01 - Happy Path
-└ Setup Student
-  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 18ms]
+□ Happy Path
+└ setup student
+  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 17ms]
+  √  Setup student status is 200
+  √  Setup student result is OK
+
+└ setup course
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  √  Setup course status is 200
+  √  Setup course result is OK
+
+└ get course
+  GET http://localhost:3000/courses/CS313 [200 OK, 209B, 2ms]
+  √  Get course status is 200
+  √  Course exists
+
+└ setup registrations
+  POST http://localhost:3000/registrations [201 Created, 202B, 2ms]
+  √  Status code is 201
+  √  Registration result is OK
+
+└ get registration
+  GET http://localhost:3000/registrations [200 OK, 359B, 3ms]
+  √  Get registrations status is 200
+  √  Registrations response is valid
+
+□ Inactive Student
+└ Setup Inactive Student
+  PUT http://localhost:3000/students/B231234568 [200 OK, 178B, 2ms]
+  √  Setup student status is 200
+  √  Setup student result is OK
 
 └ Setup Course
   PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  √  Setup course status is 200
+  √  Setup course result is OK
 
-└ Register Student
-  POST http://localhost:3000/registrations [201 Created, 202B, 2ms]
-  √  Status code is 201
-  √  Result is OK
-  √  Registration ID exists
+└ Register Inactive Student
+  POST http://localhost:3000/registrations [200 OK, 198B, 2ms]
+  √  Status code is 200
+  √  Inactive student error
+
+□ Course Not Found
+└ Setup Student
+  PUT http://localhost:3000/students/B231234569 [200 OK, 178B, 4ms]
+  √  Setup student status is 200
+  √  Setup student result is OK
+
+└ Register
+  POST http://localhost:3000/registrations [200 OK, 191B, 2ms]
+  √  Status code is 200
+  √  Course not found
+
+□ Missing Prerequisite
+└ Setup Student
+  PUT http://localhost:3000/students/B231234570 [200 OK, 178B, 3ms]
+  √  Setup student status is 200
+  √  Setup student result is OK
+
+└ Setup Course
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  √  Setup course status is 200
+  √  Setup course result is OK
+
+└ Register
+  POST http://localhost:3000/registrations [200 OK, 215B, 2ms]
+  √  Status code is 200
+  √  Missing prerequisite error
+
+□ Missing CourseID
+└ Register
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 2ms]
+  √  Status code is 400
+  √  Missing courseID error
+
+□ Missing StudentID
+└ Setup Course
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  √  Setup course status is 200
+  √  Setup course result is OK
+
+└ Register
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 3ms]
+  √  Status code is 400
+  √  Missing studentID error
+
+□ Student Not Found
+└ Setup Course
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+
+└ Register
+  POST http://localhost:3000/registrations [200 OK, 192B, 2ms]
+  √  Status code is 200
+  √  Student not found
+
+□ Invalid JSON
+└ Register
+  POST http://localhost:3000/registrations [400 Bad Request, 199B, 2ms]
+  √  Status code is 400
+  √  Invalid JSON error
 
 ┌─────────────────────────┬─────────────────┬─────────────────┐
 │                         │        executed │          failed │
 ├─────────────────────────┼─────────────────┼─────────────────┤
 │              iterations │               1 │               0 │
 ├─────────────────────────┼─────────────────┼─────────────────┤
-│                requests │               3 │               0 │
+│                requests │              19 │               0 │
 ├─────────────────────────┼─────────────────┼─────────────────┤
-│            test-scripts │               1 │               0 │
+│            test-scripts │              18 │               0 │
 ├─────────────────────────┼─────────────────┼─────────────────┤
 │      prerequest-scripts │               0 │               0 │
 ├─────────────────────────┼─────────────────┼─────────────────┤
-│              assertions │               3 │               0 │
+│              assertions │              36 │               0 │
 ├─────────────────────────┴─────────────────┴─────────────────┤
-│ total run duration: 293ms                                   │
+│ total run duration: 1687ms                                  │
 ├─────────────────────────────────────────────────────────────┤
-│ total data received: 64B (approx)                           │
+│ total data received: 642B (approx)                          │
 ├─────────────────────────────────────────────────────────────┤
-│ average response time: 7ms [min: 2ms, max: 18ms, s.d.: 7ms] │
+│ average response time: 2ms [min: 1ms, max: 17ms, s.d.: 3ms] │
 └─────────────────────────────────────────────────────────────┘
