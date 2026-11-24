@@ -1,0 +1,76 @@
+
+{
+  "info": {
+    "name": "Lab05 API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Happy Path",
+      "item": [
+        {
+          "name": "Setup Student",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"status\":\"active\",\"coursesTaken\":[\"CS201\"]}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": "{{baseUrl}}/students/B231234567"
+          }
+        },
+        {
+          "name": "Setup Course",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"prerequisites\":[\"CS201\"]}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": "{{baseUrl}}/courses/CS313"
+          }
+        },
+        {
+          "name": "Register Student",
+          "event": [{
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Status code is 201', function () {",
+                "    pm.response.to.have.status(201);",
+                "});",
+                "pm.test('Result is OK', function () {",
+                "    pm.expect(pm.response.json().result).to.eql('OK');",
+                "});",
+                "pm.test('Registration ID exists', function () {",
+                "    pm.expect(pm.response.json().registrationID).to.be.a('number');",
+                "});"
+              ]
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"studentID\":\"B231234567\",\"courseID\":\"CS313\"}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": "{{baseUrl}}/registrations"
+          }
+        }
+      ]
+    }
+  ]
+}
