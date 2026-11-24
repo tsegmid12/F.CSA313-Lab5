@@ -135,7 +135,7 @@ Lab05 API Tests
 ├─────────────────────────┼──────────┼──────────┤
 │              assertions │       36 │       36 │
 ├─────────────────────────┴──────────┴──────────┤
-│ total run duration: 1751ms                    │
+│ total run duration: 1561ms                    │
 ├───────────────────────────────────────────────┤
 │ total data received: 0B (approx)              │
 └───────────────────────────────────────────────┘
@@ -416,3 +416,4 @@ Lab05 API Tests
                       "undefined" is not valid JSON                            
                       at assertion:1 in test-script                            
                       inside "Invalid JSON / Register"                         
+Newman exit code: 1
