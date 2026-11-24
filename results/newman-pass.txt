@@ -4,12 +4,12 @@ Lab05 API Tests
 
 □ Happy Path
 └ setup student
-  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 17ms]
+  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 20ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
 └ setup course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 3ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
@@ -19,12 +19,13 @@ Lab05 API Tests
   √  Course exists
 
 └ setup registrations
-  POST http://localhost:3000/registrations [201 Created, 202B, 2ms]
+  POST http://localhost:3000/registrations [201 Created, 202B, 1ms]
   √  Status code is 201
   √  Registration result is OK
+  √  Registration ID exists
 
 └ get registration
-  GET http://localhost:3000/registrations [200 OK, 359B, 3ms]
+  GET http://localhost:3000/registrations [200 OK, 229B, 3ms]
   √  Get registrations status is 200
   √  Registrations response is valid
 
@@ -46,7 +47,7 @@ Lab05 API Tests
 
 □ Course Not Found
 └ Setup Student
-  PUT http://localhost:3000/students/B231234569 [200 OK, 178B, 4ms]
+  PUT http://localhost:3000/students/B231234569 [200 OK, 178B, 2ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
@@ -57,23 +58,23 @@ Lab05 API Tests
 
 □ Missing Prerequisite
 └ Setup Student
-  PUT http://localhost:3000/students/B231234570 [200 OK, 178B, 3ms]
+  PUT http://localhost:3000/students/B231234570 [200 OK, 178B, 1ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [200 OK, 215B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 215B, 1ms]
   √  Status code is 200
   √  Missing prerequisite error
 
 □ Missing CourseID
 └ Register
-  POST http://localhost:3000/registrations [400 Bad Request, 202B, 2ms]
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
   √  Status code is 400
   √  Missing courseID error
 
@@ -84,13 +85,13 @@ Lab05 API Tests
   √  Setup course result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [400 Bad Request, 202B, 3ms]
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
   √  Status code is 400
   √  Missing studentID error
 
 □ Student Not Found
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
 
 └ Register
   POST http://localhost:3000/registrations [200 OK, 192B, 2ms]
@@ -114,11 +115,11 @@ Lab05 API Tests
 ├─────────────────────────┼─────────────────┼─────────────────┤
 │      prerequest-scripts │               0 │               0 │
 ├─────────────────────────┼─────────────────┼─────────────────┤
-│              assertions │              36 │               0 │
+│              assertions │              37 │               0 │
 ├─────────────────────────┴─────────────────┴─────────────────┤
-│ total run duration: 1687ms                                  │
+│ total run duration: 1724ms                                  │
 ├─────────────────────────────────────────────────────────────┤
-│ total data received: 642B (approx)                          │
+│ total data received: 512B (approx)                          │
 ├─────────────────────────────────────────────────────────────┤
-│ average response time: 2ms [min: 1ms, max: 17ms, s.d.: 3ms] │
+│ average response time: 2ms [min: 1ms, max: 20ms, s.d.: 4ms] │
 └─────────────────────────────────────────────────────────────┘
