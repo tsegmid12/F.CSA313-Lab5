@@ -4,7 +4,7 @@ Lab05 API Tests
 
 □ 01 - Happy Path
 └ Setup Student
-  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 15ms]
+  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 18ms]
 
 └ Setup Course
   PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
@@ -28,9 +28,9 @@ Lab05 API Tests
 ├─────────────────────────┼─────────────────┼─────────────────┤
 │              assertions │               3 │               0 │
 ├─────────────────────────┴─────────────────┴─────────────────┤
-│ total run duration: 280ms                                   │
+│ total run duration: 293ms                                   │
 ├─────────────────────────────────────────────────────────────┤
 │ total data received: 64B (approx)                           │
 ├─────────────────────────────────────────────────────────────┤
-│ average response time: 6ms [min: 2ms, max: 15ms, s.d.: 6ms] │
+│ average response time: 7ms [min: 2ms, max: 18ms, s.d.: 7ms] │
 └─────────────────────────────────────────────────────────────┘

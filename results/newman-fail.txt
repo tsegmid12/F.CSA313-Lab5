@@ -1,0 +1,34 @@
+newman
+
+Lab05 API Tests - Deliberate Failure
+
+→ Deliberate Failure - Wrong Expected Result
+  PUT http://localhost:3000/students/B231234599 [200 OK, 178B, 19ms]
+  1. Deliberate failure - expected result is WRONG
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                0 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │                1 │                1 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 123ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 15B (approx)                             │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 19ms, max: 19ms, s.d.: 0µs] │
+└───────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                              
+                                                                         
+ 1.  AssertionError  Deliberate failure - expected result is WRONG       
+                     expected 'OK' to deeply equal 'THIS_IS_WRONG'       
+                     at assertion:0 in test-script                       
+                     inside "Deliberate Failure - Wrong Expected Result" 

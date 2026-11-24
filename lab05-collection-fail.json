@@ -1,0 +1,50 @@
+
+{
+  "info": {
+    "name": "Lab05 API Tests - Deliberate Failure",
+    "description": "A deliberately failing collection for Newman failure demonstration.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Deliberate Failure - Wrong Expected Result",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"active\",\n  \"coursesTaken\": []\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/students/B231234599",
+          "host": ["{{baseUrl}}"],
+          "path": ["students", "B231234599"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Deliberate failure - expected result is WRONG', function () {",
+              "    pm.expect(pm.response.json().result).to.eql('THIS_IS_WRONG');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
