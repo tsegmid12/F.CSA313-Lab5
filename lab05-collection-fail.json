@@ -114,9 +114,9 @@
               "listen": "test",
               "script": {
                 "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Registration result is OK\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.result).to.eql(\"WRONG_HAPPY_PATH\");\r\n});"
-                ]
+               "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Registration result is OK\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.result).to.eql(\"OK\");\r\n});\r\n\r\npm.test(\"Registration ID exists\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json).to.have.property(\"registrationID\");\r\n});"
+              ]
               }
             }
           ],

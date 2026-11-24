@@ -9,7 +9,7 @@ Lab05 API Tests
   √  Setup student result is OK
 
 └ setup course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 3ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
@@ -21,28 +21,29 @@ Lab05 API Tests
 └ setup registrations
   POST http://localhost:3000/registrations [201 Created, 202B, 2ms]
   √  Status code is 201
-  1. Registration result is OK
+  √  Registration result is OK
+  √  Registration ID exists
 
 └ get registration
-  GET http://localhost:3000/registrations [200 OK, 554B, 2ms]
+  GET http://localhost:3000/registrations [200 OK, 294B, 2ms]
   √  Get registrations status is 200
   √  Registrations response is valid
 
 □ Inactive Student
 └ Setup Inactive Student
-  PUT http://localhost:3000/students/B231234568 [200 OK, 178B, 3ms]
+  PUT http://localhost:3000/students/B231234568 [200 OK, 178B, 1ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
 └ Register Inactive Student
-  POST http://localhost:3000/registrations [200 OK, 198B, 1ms]
+  POST http://localhost:3000/registrations [200 OK, 198B, 2ms]
   √  Status code is 200
-  2. Inactive student error
+  1. Inactive student error
 
 □ Course Not Found
 └ Setup Student
@@ -51,42 +52,42 @@ Lab05 API Tests
   √  Setup student result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [200 OK, 191B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 191B, 1ms]
   √  Status code is 200
-  3. Course not found
+  2. Course not found
 
 □ Missing Prerequisite
 └ Setup Student
-  PUT http://localhost:3000/students/B231234570 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/students/B231234570 [200 OK, 178B, 1ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [200 OK, 215B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 215B, 1ms]
   √  Status code is 200
-  4. Missing prerequisite error
+  3. Missing prerequisite error
 
 □ Missing CourseID
 └ Register
-  POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 2ms]
   √  Status code is 400
-  5. Missing courseID error
+  4. Missing courseID error
 
 □ Missing StudentID
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
 └ Register
   POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
   √  Status code is 400
-  6. Missing studentID error
+  5. Missing studentID error
 
 □ Student Not Found
 └ Setup Course
@@ -95,13 +96,13 @@ Lab05 API Tests
 └ Register
   POST http://localhost:3000/registrations [200 OK, 192B, 1ms]
   √  Status code is 200
-  7. Student not found
+  6. Student not found
 
 □ Invalid JSON
 └ Register
   POST http://localhost:3000/registrations [400 Bad Request, 199B, 1ms]
   √  Status code is 400
-  8. Invalid JSON error
+  7. Invalid JSON error
 
 ┌─────────────────────────┬─────────────────┬─────────────────┐
 │                         │        executed │          failed │
@@ -114,53 +115,48 @@ Lab05 API Tests
 ├─────────────────────────┼─────────────────┼─────────────────┤
 │      prerequest-scripts │               0 │               0 │
 ├─────────────────────────┼─────────────────┼─────────────────┤
-│              assertions │              36 │               8 │
+│              assertions │              37 │               7 │
 ├─────────────────────────┴─────────────────┴─────────────────┤
-│ total run duration: 1662ms                                  │
+│ total run duration: 1718ms                                  │
 ├─────────────────────────────────────────────────────────────┤
-│ total data received: 837B (approx)                          │
+│ total data received: 577B (approx)                          │
 ├─────────────────────────────────────────────────────────────┤
 │ average response time: 2ms [min: 1ms, max: 16ms, s.d.: 3ms] │
 └─────────────────────────────────────────────────────────────┘
 
   #  failure         detail                                                              
                                                                                          
- 1.  AssertionError  Registration result is OK                                           
-                     expected 'OK' to deeply equal 'WRONG_HAPPY_PATH'                    
-                     at assertion:1 in test-script                                       
-                     inside "Happy Path / setup registrations"                           
-                                                                                         
- 2.  AssertionError  Inactive student error                                              
+ 1.  AssertionError  Inactive student error                                              
                      expected 'ERROR_INACTIVE_STUDENT' to deeply equal 'WRONG_INACTIVE'  
                      at assertion:1 in test-script                                       
                      inside "Inactive Student / Register Inactive Student"               
                                                                                          
- 3.  AssertionError  Course not found                                                    
+ 2.  AssertionError  Course not found                                                    
                      expected 'ERROR_NO_COURSE' to deeply equal 'WRONG_COURSE'           
                      at assertion:1 in test-script                                       
                      inside "Course Not Found / Register"                                
                                                                                          
- 4.  AssertionError  Missing prerequisite error                                          
+ 3.  AssertionError  Missing prerequisite error                                          
                      expected 'ERROR_PREREQUISITES' to deeply equal 'WRONG_PREREQUISITE' 
                      at assertion:1 in test-script                                       
                      inside "Missing Prerequisite / Register"                            
                                                                                          
- 5.  AssertionError  Missing courseID error                                              
+ 4.  AssertionError  Missing courseID error                                              
                      expected 'ERROR_BAD_REQUEST' to deeply equal 'WRONG_COURSE_ID'      
                      at assertion:1 in test-script                                       
                      inside "Missing CourseID / Register"                                
                                                                                          
- 6.  AssertionError  Missing studentID error                                             
+ 5.  AssertionError  Missing studentID error                                             
                      expected 'ERROR_BAD_REQUEST' to deeply equal 'WRONG_STUDENT_ID'     
                      at assertion:1 in test-script                                       
                      inside "Missing StudentID / Register"                               
                                                                                          
- 7.  AssertionError  Student not found                                                   
+ 6.  AssertionError  Student not found                                                   
                      expected 'ERROR_NO_STUDENT' to deeply equal 'WRONG_STUDENT'         
                      at assertion:1 in test-script                                       
                      inside "Student Not Found / Register"                               
                                                                                          
- 8.  AssertionError  Invalid JSON error                                                  
+ 7.  AssertionError  Invalid JSON error                                                  
                      expected 'ERROR_BAD_JSON' to deeply equal 'WRONG_JSON'              
                      at assertion:1 in test-script                                       
                      inside "Invalid JSON / Register"                                    
