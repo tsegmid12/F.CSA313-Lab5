@@ -4,17 +4,17 @@ Lab05 API Tests
 
 □ Happy Path
 └ setup student
-  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 21ms]
+  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 16ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
 └ setup course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 3ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
 └ get course
-  GET http://localhost:3000/courses/CS313 [200 OK, 209B, 3ms]
+  GET http://localhost:3000/courses/CS313 [200 OK, 209B, 5ms]
   √  Get course status is 200
   √  Course exists
 
@@ -25,7 +25,7 @@ Lab05 API Tests
   √  Registration ID exists
 
 └ get registration
-  GET http://localhost:3000/registrations [200 OK, 294B, 2ms]
+  GET http://localhost:3000/registrations [200 OK, 424B, 2ms]
   √  Get registrations status is 200
   √  Registrations response is valid
 
@@ -36,7 +36,7 @@ Lab05 API Tests
   √  Setup student result is OK
 
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 5ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
@@ -47,12 +47,12 @@ Lab05 API Tests
 
 □ Course Not Found
 └ Setup Student
-  PUT http://localhost:3000/students/B231234569 [200 OK, 178B, 3ms]
+  PUT http://localhost:3000/students/B231234569 [200 OK, 178B, 2ms]
   √  Setup student status is 200
   √  Setup student result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [200 OK, 191B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 191B, 3ms]
   √  Status code is 200
   2. Course not found
 
@@ -63,18 +63,18 @@ Lab05 API Tests
   √  Setup student result is OK
 
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 4ms]
   √  Setup course status is 200
   √  Setup course result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [200 OK, 215B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 215B, 3ms]
   √  Status code is 200
   3. Missing prerequisite error
 
 □ Missing CourseID
 └ Register
-  POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 3ms]
   √  Status code is 400
   4. Missing courseID error
 
@@ -85,16 +85,16 @@ Lab05 API Tests
   √  Setup course result is OK
 
 └ Register
-  POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 2ms]
   √  Status code is 400
   5. Missing studentID error
 
 □ Student Not Found
 └ Setup Course
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
 
 └ Register
-  POST http://localhost:3000/registrations [200 OK, 192B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 192B, 1ms]
   √  Status code is 200
   6. Student not found
 
@@ -111,7 +111,7 @@ Lab05 API Tests
   √  Setup student result is OK
 
 └ Register inactive student to missing course
-  POST http://localhost:3000/registrations [200 OK, 198B, 1ms]
+  POST http://localhost:3000/registrations [200 OK, 198B, 2ms]
   √  Status code is 200
   √  Inactive student error has priority
 
@@ -128,11 +128,11 @@ Lab05 API Tests
 ├─────────────────────────┼─────────────────┼─────────────────┤
 │              assertions │              41 │               7 │
 ├─────────────────────────┴─────────────────┴─────────────────┤
-│ total run duration: 1953ms                                  │
+│ total run duration: 1892ms                                  │
 ├─────────────────────────────────────────────────────────────┤
-│ total data received: 627B (approx)                          │
+│ total data received: 757B (approx)                          │
 ├─────────────────────────────────────────────────────────────┤
-│ average response time: 2ms [min: 1ms, max: 21ms, s.d.: 4ms] │
+│ average response time: 2ms [min: 1ms, max: 16ms, s.d.: 3ms] │
 └─────────────────────────────────────────────────────────────┘
 
   #  failure         detail                                                              
