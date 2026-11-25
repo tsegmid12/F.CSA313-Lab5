@@ -199,7 +199,7 @@ FAIL collection-д зарим assertion-ийн хүлээгдэж буй үр д
   Newman exit code               1
 
 **Үр дүн:** FAIL тест хүлээгдэж буй байдлаар ажилласан. Зориудаар буруу
-болгосон 8 assertion амжилтгүй болсон.
+болгосон 7 assertion амжилтгүй болсон.
 
 Лог файл: `results/newman-fail.txt`
 
