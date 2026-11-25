@@ -723,7 +723,74 @@
         }
       ],
       "name": "Invalid JSON"
+    },
+
+{
+  "name": "Double Error - Inactive Student + Missing Course",
+  "item": [
+    {
+      "name": "Setup inactive student",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Setup student status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Setup student result is OK', function () { pm.expect(pm.response.json().result).to.eql('OK'); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"inactive\",\"coursesTaken\":[]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/students/B231234572"
+      },
+      "response": []
+    },
+    {
+      "name": "Register inactive student to missing course",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Inactive student error has priority', function () { pm.expect(pm.response.json().result).to.eql('ERROR_INACTIVE_STUDENT'); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"studentID\":\"B231234572\",\"courseID\":\"CS999\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/registrations"
+      },
+      "response": []
     }
+  ]
+}
+
   ],
   "info": {
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
